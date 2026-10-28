@@ -1,11 +1,12 @@
 {
-  "name": "student-task-manager",
+  "name": "devops-task-manager",
   "version": "1.0.0",
-  "description": "Student Task Manager application for DevOps Scalable Systems Lab",
+  "description": "Student Task Manager application for PICT DevOps for Scalable Systems Lab",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "build": "node \"Assignment 3/build.js\""
+    "build": "node build.js",
+    "test": "node test.js"
   },
   "dependencies": {
     "express": "^4.19.2",
