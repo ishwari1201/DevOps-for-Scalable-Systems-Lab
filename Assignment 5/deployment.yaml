@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-task-manager
+  labels:
+    app: student-task-manager
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: student-task-manager
+  template:
+    metadata:
+      labels:
+        app: student-task-manager
+    spec:
+      containers:
+      - name: task-manager
+        image: task-manager:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
